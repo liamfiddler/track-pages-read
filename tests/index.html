@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TrackPagesRead Test</title>
+		<script type="importmap">
+			{
+				"imports": {
+					"idb": "/node_modules/idb/build/index.js"
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<h1>TrackPagesRead Test Page</h1>
+		<p>This page is used for Playwright testing.</p>
+		<p>Open the browser console to see test output.</p>
+		<div
+			style="
+				height: 5000px;
+				background: linear-gradient(to bottom, #f0f0f0, #ccc);
+			"
+		>
+			Scroll down to test TrackPagesRead.trackScroll() functionality
+		</div>
+
+		<script type="module">
+			import TrackPagesRead from '../index.js';
+
+			// Make TrackPagesRead available globally for tests
+			window.TrackPagesRead = TrackPagesRead;
+
+			console.log('✅ TrackPagesRead loaded successfully');
+		</script>
+	</body>
+</html>
