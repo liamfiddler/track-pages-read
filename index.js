@@ -3,9 +3,7 @@
 import { openDB } from 'idb';
 
 /**
- * @fileoverview
- * @module TrackPagesRead
- * @description A class that tracks pages read by a user.
+ * @module track-pages-read
  */
 
 /**
@@ -16,6 +14,9 @@ import { openDB } from 'idb';
  * @property {string} [storeName] The IndexedDB object store name (default: 'paths').
  */
 
+/**
+ * A class that tracks pages read by a user.
+ */
 export default class TrackPagesRead {
 	/** @type {string} */
 	#dbName = 'track-pages-read';

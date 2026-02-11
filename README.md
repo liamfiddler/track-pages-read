@@ -1,6 +1,6 @@
 # 📖 Track Pages Read
 
-> *A lightweight, persistent, and high-performance utility to track page views and reading progress.*
+> _A lightweight, persistent, and high-performance utility to track page views and reading progress._
 
 🚀 **Fast** | 📦 **Lightweight** (uses `idb`) | 💾 **Persistent** (IndexedDB)
 
@@ -21,6 +21,7 @@ npm install --save liamfiddler/track-pages-read
 ## 🚀 Quick Start
 
 ### Basic Setup
+
 Initialize the tracker and start monitoring reading progress automatically.
 
 ```javascript
@@ -34,7 +35,7 @@ tracker.trackScroll();
 // ✅ Check if the current page has already been read
 const readDate = await tracker.isRead();
 if (readDate) {
-    console.log(`Page read on: ${readDate.toLocaleString()}`);
+	console.log(`Page read on: ${readDate.toLocaleString()}`);
 }
 ```
 
@@ -44,39 +45,47 @@ You can customize the underlying storage and tracking frequency:
 
 ```javascript
 const tracker = new TrackPagesRead({
-    dbName: 'analytics-db',   // Name of the IndexedDB database
-    dbVersion: 1,             // Database version
-    storeName: 'viewed_paths' // Object store name
+	dbName: 'analytics-db', // Name of the IndexedDB database
+	dbVersion: 1, // Database version
+	storeName: 'viewed_paths', // Object store name
 });
 
 // Fine-tuned scroll tracking
 tracker.trackScroll(
-    0.75, // Threshold: 75% of page height
-    1000  // Frequency: Max one update every 1000ms
+	0.75, // Threshold: 75% of page height
+	1000 // Frequency: Max one update every 1000ms
 );
 ```
 
 ## 📖 API Reference
 
 ### `constructor(config?: TrackPagesReadConfig)`
+
 Creates a new instance.
+
 - `dbName` (default: `'track-pages-read'`)
 - `dbVersion` (default: `1`)
 - `storeName` (default: `'paths'`)
 
 ### `isRead(pathname?: string): Promise<Date|null>`
+
 Checks if a page has been read. If `pathname` is omitted, uses `window.location.pathname`.
 
 ### `getAll(): AsyncGenerator<{pathname: string, date: Date}>`
+
 Yields every read page in the database.
 
 ### `getAllByPath(pathname: string): AsyncGenerator<{pathname: string, date: Date}>`
+
 Efficiently retrieves all pages under a specific path prefix (e.g., `/blog`).
 
 ### `markAsRead(pathname?: string): Promise<void>`
+
 Manually marks a page as read.
 
 ### `trackScroll(threshold?: number, frequency?: number): void`
+
 Starts a scroll listener.
+
 - `threshold` (default: `0.8`): Depth ratio (0-1) to trigger "read" status.
 - `frequency` (default: `2000`): Max update rate in milliseconds.
